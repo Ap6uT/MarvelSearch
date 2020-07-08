@@ -1,8 +1,14 @@
 PODS:
+  - Action (4.1.0):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
   - Alamofire (5.2.1)
+  - Differentiator (4.0.1)
   - Kingfisher (5.14.0):
     - Kingfisher/Core (= 5.14.0)
   - Kingfisher/Core (5.14.0)
+  - "NSObject+Rx (5.1.0)":
+    - RxSwift (~> 5.1)
   - Realm (5.0.3):
     - Realm/Headers (= 5.0.3)
   - Realm/Headers (5.0.3)
@@ -16,6 +22,10 @@ PODS:
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
   - RxRealm (3.0.0):
     - RealmSwift (~> 5.0)
     - RxSwift (~> 5.0)
@@ -24,37 +34,48 @@ PODS:
   - RxSwift (5.1.1)
 
 DEPENDENCIES:
+  - Action
   - Alamofire
   - Kingfisher
+  - "NSObject+Rx"
   - RealmSwift
   - RxAlamofire
   - RxCocoa
+  - RxDataSources
   - RxRealm
   - RxSwift
 
 SPEC REPOS:
   trunk:
+    - Action
     - Alamofire
+    - Differentiator
     - Kingfisher
+    - "NSObject+Rx"
     - Realm
     - RealmSwift
     - RxAlamofire
     - RxCocoa
+    - RxDataSources
     - RxRealm
     - RxRelay
     - RxSwift
 
 SPEC CHECKSUMS:
+  Action: 79e6c5dc91e13eea045ab6744b3e5609086671aa
   Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   Kingfisher: 7b64389a43139c903ec434788344c288217c792d
+  "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
   Realm: bfca1699b61b0b17c3a69ae0e648314eae91fbdb
   RealmSwift: 493c9f089cd3893b3959007973c0e4f640906ba0
   RxAlamofire: 22287c710761466d0123504c566a8381520d4d63
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxRealm: af7a3c857efd5a711c176f6df0d67418ad48293b
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
 
-PODFILE CHECKSUM: 1c165ab9f07bfa19a2fbd70f10ae22aba9bbf1de
+PODFILE CHECKSUM: 60efb124dd35e76fdcd0cbd7dab2681953970f1a
 
 COCOAPODS: 1.9.1

@@ -9,4 +9,7 @@ target 'MarvelSearch' do
     pod 'Kingfisher'
     pod 'RxAlamofire'
     pod 'Alamofire'
+    pod 'RxDataSources'
+    pod 'Action'
+    pod 'NSObject+Rx'
 end
