@@ -18,6 +18,9 @@ class SearchViewController: UIViewController, BindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let search = Search()
+        search.printURL()
+        print("aaa")
     }
     
 
