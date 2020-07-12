@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RxDataSources
 import Action
+import RxCocoa
 
 
 struct SearchViewModel {
@@ -19,6 +20,7 @@ struct SearchViewModel {
     
     let disposeBag = DisposeBag()
     
+    let characters = BehaviorRelay<[ResponseResult]>(value: [])
     
     init(characterService: CharacterServiceType, coordinator: SceneCoordinatorType) {
         self.characterService = characterService

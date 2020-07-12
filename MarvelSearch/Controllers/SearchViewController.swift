@@ -8,16 +8,22 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import Action
+import RxDataSources
 
 
 class SearchViewController: UIViewController, BindableType {
     
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    
     var viewModel: SearchViewModel!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let search = Search()
         search.printURL()
         print("aaa")
@@ -28,4 +34,16 @@ class SearchViewController: UIViewController, BindableType {
         
     }
 
+}
+
+extension SearchViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.characters.value.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterCell") as! CharacterTableViewCell
+        cell.configure(with: viewModel.characters.value[indexPath.row])
+        return cell
+    }
 }

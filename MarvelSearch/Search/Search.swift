@@ -29,6 +29,18 @@ enum ApiResult<Value, Error>{
 
 struct Response: Codable{
     let status: String
+    let data: ResponseData
+}
+
+struct ResponseData: Codable {
+    //let offset: Int
+    let results: [ResponseResult]
+}
+
+struct ResponseResult: Codable {
+    let id: Int
+    let name: String
+    let description: String
 }
 
 struct ApiErrorMessage: Codable{
@@ -37,7 +49,7 @@ struct ApiErrorMessage: Codable{
 
 class Search {
     var ts: String = {
-        return "1"
+        return "5"
     }()
     
 
@@ -54,19 +66,19 @@ class Search {
     func printURL() {
         let timeStamp = ts
         let hash = (timeStamp + privateKey + publicKey).md5()
-        
+        print("bbb")
         _ = manager.rx
             .request(.get, API + charactersSearchEndpoint, parameters: ["nameStartsWith": "spider", "ts": timeStamp, "apikey": publicKey, "hash": hash])
             .responseData()
-            .expectingObject(ofType: Response.self) // <-- specify what object is expected
+            .expectingObject(ofType: Response.self)
             .subscribe(onNext: { apiResult in
-                switch apiResult{
+                //print(apiResult)
+                switch apiResult {
                 case let .success(response):
-                    // handling the successful response
                     print(response.status)
+                    print(response.data.results)
 
                 case let .failure(apiErrorMessage):
-                    // handling the erroneous response
                     print(apiErrorMessage.error_message)
                 }
             },onError:{ err in
