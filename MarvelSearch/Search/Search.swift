@@ -52,6 +52,7 @@ class Search {
         return "5"
     }()
     
+    public static let shared = Search()
 
     let session = URLSession.shared
     let manager = Session.default
@@ -63,26 +64,28 @@ class Search {
     let charactersSearchEndpoint = "characters"
     let characterEndpoint = "events"
     
-    func printURL() {
+    let characters = BehaviorRelay<[ResponseResult]>(value: [])
+    
+    private init() {
+    }
+    
+    
+    func searchCharacter(_ character: String) {
         let timeStamp = ts
         let hash = (timeStamp + privateKey + publicKey).md5()
-        print("bbb")
-        _ = manager.rx
-            .request(.get, API + charactersSearchEndpoint, parameters: ["nameStartsWith": "spider", "ts": timeStamp, "apikey": publicKey, "hash": hash])
+        let _ = manager.rx
+            .request(.get, API + charactersSearchEndpoint, parameters: ["nameStartsWith": character, "ts": timeStamp, "apikey": publicKey, "hash": hash])
             .responseData()
             .expectingObject(ofType: Response.self)
-            .subscribe(onNext: { apiResult in
-                //print(apiResult)
+            .subscribe(onNext: { [weak self] apiResult in
                 switch apiResult {
                 case let .success(response):
-                    print(response.status)
-                    print(response.data.results)
-
+                    self?.characters.accept(response.data.results)
                 case let .failure(apiErrorMessage):
                     print(apiErrorMessage.error_message)
                 }
             },onError:{ err in
-                // handle client originating error
+                
             })
     }
 }

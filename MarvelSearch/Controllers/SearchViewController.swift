@@ -18,32 +18,39 @@ class SearchViewController: UIViewController, BindableType {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    private let bag = DisposeBag()
     
     var viewModel: SearchViewModel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let search = Search()
-        search.printURL()
-        print("aaa")
+        searchBar.delegate = self
+        //tableView.rx.setDelegate(self).disposed(by: bag)
+        bindViewModel()
     }
+    
     
 
     func bindViewModel() {
         
+
+        self.tableView.delegate = nil
+        self.tableView.dataSource = nil
+        viewModel.characters.bind(to: tableView.rx.items(cellIdentifier: "CharacterCell", cellType: CharacterTableViewCell.self)) { (row,item,cell) in
+            cell.configure(with: item)
+        }.disposed(by: bag)
+
     }
+    
+    
 
 }
 
-extension SearchViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.characters.value.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterCell") as! CharacterTableViewCell
-        cell.configure(with: viewModel.characters.value[indexPath.row])
-        return cell
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        viewModel.searchCharacter(searchBar.text!)
     }
 }
