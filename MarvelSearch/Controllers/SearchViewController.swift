@@ -34,11 +34,12 @@ class SearchViewController: UIViewController, BindableType {
     
 
     func bindViewModel() {
+        viewModel.search.searchCharacterById(1010727)
         
 
         self.tableView.delegate = nil
         self.tableView.dataSource = nil
-        viewModel.characters.bind(to: tableView.rx.items(cellIdentifier: "CharacterCell", cellType: CharacterTableViewCell.self)) { (row,item,cell) in
+        viewModel.search.characters.bind(to: tableView.rx.items(cellIdentifier: "CharacterCell", cellType: CharacterTableViewCell.self)) { (row,item,cell) in
             cell.configure(with: item)
         }.disposed(by: bag)
 
@@ -51,6 +52,6 @@ class SearchViewController: UIViewController, BindableType {
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        viewModel.searchCharacter(searchBar.text!)
+        viewModel.search.searchCharacterByName(searchBar.text!)
     }
 }

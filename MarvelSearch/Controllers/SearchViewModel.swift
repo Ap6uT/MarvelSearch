@@ -32,7 +32,7 @@ class SearchViewModel {
     
     func searchCharacter(_ character: String) {
         
-        search.searchCharacter(character)
+        search.searchCharacterByName(character)
         //print(ch)
         //characters = ch
         //ch.asObservable()

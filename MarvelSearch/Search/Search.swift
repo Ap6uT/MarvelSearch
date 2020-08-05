@@ -14,7 +14,7 @@ import RxAlamofire
 import RxSwift
 import RxCocoa
 
-enum ApiResult<Value, Error>{
+enum ApiResult<Value, Error> {
     case success(Value)
     case failure(Error)
     
@@ -25,6 +25,11 @@ enum ApiResult<Value, Error>{
     init(error: Error){
         self = .failure(error)
     }
+}
+
+enum RequestType {
+    case id(Int)
+    case name(String)
 }
 
 struct Response: Codable{
@@ -41,6 +46,17 @@ struct ResponseResult: Codable {
     let id: Int
     let name: String
     let description: String
+    let thumbnail: Thumbnail
+}
+
+struct Thumbnail: Codable{
+    let path: String
+    let fileExtension: String
+    
+    enum CodingKeys: String, CodingKey {
+        case fileExtension = "extension"
+        case path
+    }
 }
 
 struct ApiErrorMessage: Codable{
@@ -60,9 +76,9 @@ class Search {
     let publicKey = "06d867e2f65467836f8bdaae97a512ad"
     let privateKey = "fff550e715e67f65dc275c81b5bece1cc278608f"
     
-    let API = "https://gateway.marvel.com/v1/public/"
-    let charactersSearchEndpoint = "characters"
-    let characterEndpoint = "events"
+    let API = "https://gateway.marvel.com/v1/public/characters"
+    //let charactersSearchEndpoint = ""
+
     
     let characters = BehaviorRelay<[ResponseResult]>(value: [])
     
@@ -70,11 +86,27 @@ class Search {
     }
     
     
-    func searchCharacter(_ character: String) {
+    func searchCharacterByName(_ character: String) {
+        searchCharacter(.name(character))
+    }
+    
+    func searchCharacterById(_ id: Int) {
+        searchCharacter(.id(id))
+    }
+    
+    func searchCharacter(_ requestType: RequestType) {
         let timeStamp = ts
         let hash = (timeStamp + privateKey + publicKey).md5()
+        var parameters = ["ts": timeStamp, "apikey": publicKey, "hash": hash]
+        var APIrequest = API
+        switch requestType {
+        case .id(let characterId):
+            APIrequest += "/\(characterId)"
+        case .name(let characterName):
+            parameters["nameStartsWith"] = characterName
+        }
         let _ = manager.rx
-            .request(.get, API + charactersSearchEndpoint, parameters: ["nameStartsWith": character, "ts": timeStamp, "apikey": publicKey, "hash": hash])
+            .request(.get, APIrequest, parameters: parameters)
             .responseData()
             .expectingObject(ofType: Response.self)
             .subscribe(onNext: { [weak self] apiResult in

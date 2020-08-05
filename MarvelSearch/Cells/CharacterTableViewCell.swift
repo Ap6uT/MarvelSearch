@@ -8,6 +8,9 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
+import Kingfisher
+//import RxKingfisher
 
 
 class CharacterTableViewCell: UITableViewCell {
@@ -19,6 +22,11 @@ class CharacterTableViewCell: UITableViewCell {
     
     func configure(with character: ResponseResult) {
         characterNameLabel.text = character.name
+        
+        let imageURL = URL(string: character.thumbnail.path + "." + character.thumbnail.fileExtension)
+        
+        characterImage.kf.setImage(with: imageURL)
+        
     }
     
     override func prepareForReuse() {
