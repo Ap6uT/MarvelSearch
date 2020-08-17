@@ -17,6 +17,7 @@
 		D45E5EF624B47DC500BF1FED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D45E5EF424B47DC500BF1FED /* Main.storyboard */; };
 		D45E5EF824B47DC600BF1FED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D45E5EF724B47DC600BF1FED /* Assets.xcassets */; };
 		D45E5EFB24B47DC600BF1FED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D45E5EF924B47DC600BF1FED /* LaunchScreen.storyboard */; };
+		D461966124E4327C00C0A06C /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D461966024E4327C00C0A06C /* Navigator.swift */; };
 		D4620AE824BB2E78004096A7 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4620AE724BB2E78004096A7 /* CharacterTableViewCell.swift */; };
 		D463FCE324B89DCF007A74B3 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = D463FCE224B89DCF007A74B3 /* Search.swift */; };
 		D463FCE624B89EC2007A74B3 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = D463FCE524B89EC2007A74B3 /* String+MD5.swift */; };
@@ -46,6 +47,7 @@
 		D45E5EF724B47DC600BF1FED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D45E5EFA24B47DC600BF1FED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D45E5EFC24B47DC600BF1FED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D461966024E4327C00C0A06C /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		D4620AE724BB2E78004096A7 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		D463FCE224B89DCF007A74B3 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		D463FCE524B89EC2007A74B3 /* String+MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				D45E5EEE24B47DC500BF1FED /* AppDelegate.swift */,
+				D461966024E4327C00C0A06C /* Navigator.swift */,
 				D45E5EF024B47DC500BF1FED /* SceneDelegate.swift */,
 				D463FCE124B89DAD007A74B3 /* Search */,
 				D45E084924B65BA90085ADCF /* Services */,
@@ -309,6 +312,7 @@
 			files = (
 				D465783D24B5CE5000E7FCD4 /* Scene+ViewController.swift in Sources */,
 				D465783B24B5CDEE00E7FCD4 /* Scene.swift in Sources */,
+				D461966124E4327C00C0A06C /* Navigator.swift in Sources */,
 				D465783024B5C82000E7FCD4 /* SearchViewController.swift in Sources */,
 				D45E084824B655710085ADCF /* SceneCoordinator.swift in Sources */,
 				D465783424B5CABF00E7FCD4 /* SearchViewModel.swift in Sources */,

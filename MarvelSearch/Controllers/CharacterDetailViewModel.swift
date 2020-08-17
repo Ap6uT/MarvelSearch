@@ -12,5 +12,11 @@ import Action
 
 struct CharacterDetailViewModel {
     
+    let character: ResponseResult!
+    
     let disposeBag = DisposeBag()
+    
+    init(character: ResponseResult) {
+        self.character = character
+    }
 }

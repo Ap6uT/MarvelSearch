@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="F1K-tM-2SY">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -25,20 +25,20 @@
         <!--Search View Controller-->
         <scene sceneID="wDe-Of-c0S">
             <objects>
-                <viewController id="nnp-qs-P9M" customClass="SearchViewController" customModule="MarvelSearch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" id="nnp-qs-P9M" customClass="SearchViewController" customModule="MarvelSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="huo-nH-eiX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="AsZ-tD-yWx">
-                                <rect key="frame" x="0.0" y="44" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="eHa-MD-W1n"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="U8l-sI-amZ">
-                                <rect key="frame" x="0.0" y="88" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CharacterCell" rowHeight="66" id="Kfx-2F-fPU" customClass="CharacterTableViewCell" customModule="MarvelSearch" customModuleProvider="target">
@@ -104,14 +104,41 @@
         <!--Character Detail View Controller-->
         <scene sceneID="Vto-u3-A08">
             <objects>
-                <viewController id="706-V5-Zf8" customClass="CharacterDetailViewController" customModule="MarvelSearch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CharacterDetailViewController" id="706-V5-Zf8" customClass="CharacterDetailViewController" customModule="MarvelSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JMw-I5-Umx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YQQ-3Z-b96">
+                                <rect key="frame" x="96" y="10" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="24D-gM-06A"/>
+                                    <constraint firstAttribute="width" constant="128" id="8ez-nw-W1q"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rgh-fx-7i4">
+                                <rect key="frame" x="20" y="158" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Rgh-fx-7i4" firstAttribute="top" secondItem="YQQ-3Z-b96" secondAttribute="bottom" constant="20" id="45x-im-alN"/>
+                            <constraint firstItem="UuS-jh-VS6" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Rgh-fx-7i4" secondAttribute="bottom" constant="20" id="RuQ-QY-3tI"/>
+                            <constraint firstItem="YQQ-3Z-b96" firstAttribute="centerX" secondItem="JMw-I5-Umx" secondAttribute="centerX" id="eex-ll-MW7"/>
+                            <constraint firstItem="Rgh-fx-7i4" firstAttribute="leading" secondItem="UuS-jh-VS6" secondAttribute="leading" constant="20" id="f4a-rh-c1f"/>
+                            <constraint firstItem="YQQ-3Z-b96" firstAttribute="top" secondItem="UuS-jh-VS6" secondAttribute="top" constant="10" id="ol6-Xh-Bqz"/>
+                            <constraint firstItem="UuS-jh-VS6" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Rgh-fx-7i4" secondAttribute="trailing" constant="20" id="pJ2-43-fS9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="UuS-jh-VS6"/>
                     </view>
                     <navigationItem key="navigationItem" id="1w4-Cu-php"/>
+                    <connections>
+                        <outlet property="characterImage" destination="YQQ-3Z-b96" id="bJp-xw-hEJ"/>
+                        <outlet property="characterInfo" destination="Rgh-fx-7i4" id="eBf-Gd-mv7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eEQ-lm-O8R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -127,9 +154,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="nnp-qs-P9M" kind="relationship" relationship="rootViewController" id="ZZ4-XK-gOx"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wjl-vI-mfR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -145,9 +169,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="706-V5-Zf8" kind="relationship" relationship="rootViewController" id="057-nR-bCy"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AdU-6x-vNx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

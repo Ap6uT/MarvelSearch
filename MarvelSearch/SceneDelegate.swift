@@ -11,7 +11,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    let navigator = Navigator()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -19,12 +19,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         //guard let _ = (scene as? UIWindowScene) else { return }
         
-        let service = CharacterService()
+        /*let service = CharacterService()
         let sceneCoordinator = SceneCoordinator(window: window!)
         
         let searchViewModel = SearchViewModel(characterService: service, coordinator: sceneCoordinator)
         let firstScene = Scene.search(searchViewModel)
-        sceneCoordinator.transition(to: firstScene, type: .root)
+        sceneCoordinator.transition(to: firstScene, type: .root)*/
+
+        let feedNavigation = window!.rootViewController! as! UINavigationController
+        navigator.show(segue: .search, sender: feedNavigation)
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
